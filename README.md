@@ -18,19 +18,27 @@ Steps
    > cd C:\
    > git clone https://github.com/MyChakoTaco/LinxKeystone.git
 
-3. Edit C:\LinxKeystone\.env file with the following information
+3. Get latest branches from remote repo
+
+   > cd C:\
+   > git fetch origin
+
+4. Edit C:\LinxKeystone\.env file with the following information
 
    - CLIENT-TOKEN
+   - ASTRALKEYS-FILEPATH
 
-4. Install packages
+5. Install packages
 
    > cd C:\LinxKeystone
    > npm install
 
-5. Run project
+6. Run project
 
    > cd C:\linxKeystone
    > npm start
 
-6. Profit???
-7. When finished, Ctrl + C to cancel script
+7. Profit???
+8. When finished, Ctrl + C to cancel script
+
+Repeat steps 3 - 7 when viewing newly updated codebase
