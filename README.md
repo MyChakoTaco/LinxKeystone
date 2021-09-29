@@ -20,7 +20,7 @@ Steps
 
 3. Get latest branches from remote repo
 
-   > cd C:\
+   > cd C:\LinxKeystone
    > git fetch origin
 
 4. Edit C:\LinxKeystone\.env file with the following information
@@ -35,7 +35,7 @@ Steps
 
 6. Run project
 
-   > cd C:\linxKeystone
+   > cd C:\LinxKeystone
    > npm start
 
 7. Profit???
