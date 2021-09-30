@@ -1,9 +1,8 @@
-require('dotenv').config()
-
 const fs = require('fs')
+const { astralKeysBakFile } = require('../config.json')
 
 const LINXKEYS_FILEPATH = "data/LinxKeys.json"
-const ASTRALKEYS_FILEPATH = process.env.ASTRALKEYS_FILEPATH
+const ASTRALKEYS_FILEPATH = astralKeysBakFile
 
 const getKeys = () => {
 	let keys = []
@@ -14,7 +13,7 @@ const getKeys = () => {
 		console.log("There was an error pulling AstralKeys data:")
 		console.error(err)
 		console.log("Loading from backup LinxKeys")
-		
+
 		keys = pullLinxKeys()
 	}
 
