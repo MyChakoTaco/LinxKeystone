@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const { Client, Intents } = require('discord.js')
-const AstralKeysParser = require('./src/AstralKeysParser')
+const Manager = require('./src/DataManager')
 
 const bot = new Client({ intents: [Intents.FLAGS.GUILDS] })
 
@@ -12,5 +12,6 @@ bot.on('ready', () => {
     console.log('Linx Keystone, ready to roll!')
     console.log('')
 
-    AstralKeysParser.runParser()
+    const keys = Manager.getKeys()
+    console.log(keys)
 })
