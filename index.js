@@ -1,16 +1,21 @@
-require('dotenv').config()
-
 const { Client, Intents } = require('discord.js')
-const AstralKeysParser = require('./src/AstralKeysParser')
+const { token } = require('./config.json')
 
 const bot = new Client({ intents: [Intents.FLAGS.GUILDS] })
 
-bot.login(process.env.CLIENT_TOKEN)
+bot.login(token)
 
-bot.on('ready', () => {
+bot.once('ready', () => {
     console.clear()
     console.log('Linx Keystone, ready to roll!')
-    console.log('')
+})
 
-    AstralKeysParser.runParser()
+bot.on('interactionCreate', async interaction => {
+    if (!interaction.isCommand()) return;
+
+    const { commandName } = interaction;
+
+    if (commandName === 'keys') {
+        await interaction.reply('I hear you!');
+    }
 })
