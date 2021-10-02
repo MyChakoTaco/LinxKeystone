@@ -1,5 +1,6 @@
 const { Client, Intents } = require('discord.js')
 const { token } = require('./config.json')
+const { getEmbed } = require("./src/LinxKeyEmbeder")
 
 const bot = new Client({ intents: [Intents.FLAGS.GUILDS] })
 
@@ -16,6 +17,6 @@ bot.on('interactionCreate', async interaction => {
     const { commandName } = interaction;
 
     if (commandName === 'keys') {
-        await interaction.reply('I hear you!');
+        await interaction.reply({ embeds: [getEmbed()] });
     }
 })

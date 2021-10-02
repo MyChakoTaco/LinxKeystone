@@ -83,4 +83,4 @@ function parseAstralKeysData(data) {
 	return keys
 }
 
-module.exports = { getKeys };
+module.exports = { getKeys }
