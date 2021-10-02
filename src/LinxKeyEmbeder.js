@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js')
+const _ = require('lodash')
 const { getKeys } = require('./DataManager')
 
 const DUNGEONS = {
@@ -12,22 +13,10 @@ const DUNGEONS = {
   '382': 'Theater of Pain',
 }
 
-const getEmbed = () => {
+const getEmbed = (sort) => {
   const keys = getKeys()
 
-  keys.sort((a, b) => {
-    const aKeyLevel = parseInt(a.key_level)
-    const bKeyLevel = parseInt(b.key_level)
-
-    if (aKeyLevel < bKeyLevel) return 1
-
-    if (aKeyLevel > bKeyLevel) return -1
-
-    const aDungeonID = parseInt(a.dungeon_id)
-    const bDungeonID = parseInt(bKeyLevel.dungeon_id)
-
-    return aDungeonID < bDungeonID ? 1 : -1
-  })
+  sortKeys(keys, sort)
 
   const characters = keys.reduce((red, cur) => {
     const charName = cur.unit.split('-')[0]
@@ -57,6 +46,50 @@ const getEmbed = () => {
     .setTimestamp()
 
   return keyEmbed
+}
+
+function sortKeys(keys, sort) {
+  switch (_.toLower(sort)) {
+    case 'character':
+    case 'c':
+      keys.sort((a, b) => {
+        const aUnit = a.unit
+        const bUnit = b.unit
+
+        return aUnit === bUnit ? 0 : aUnit < bUnit ? -1 : 1
+      })
+      break
+
+    case 'dungeon':
+    case 'd':
+      keys.sort((a, b) => {
+        const aDung = DUNGEONS[a.dungeon_id]
+        const bDung = DUNGEONS[b.dungeon_id]
+
+        if (aDung === bDung) {
+          const aLevel = parseInt(a.key_level)
+          const bLevel = parseInt(b.key_level)
+          return aLevel === bLevel ? 0 : aLevel < bLevel ? 1 : -1
+        }
+
+        return aDung === bDung ? 0 : aDung < bDung ? -1 : 1
+      })
+      break
+
+    default:
+      keys.sort((a, b) => {
+        const aLevel = parseInt(a.key_level)
+        const bLevel = parseInt(b.key_level)
+
+        if (aLevel === bLevel) {
+          const aDung = DUNGEONS[a.dungeon_id]
+          const bDung = DUNGEONS[b.dungeon_id]
+          return aDung === bDung ? 0 : aDung < bDung ? -1 : 1
+        }
+
+        return aLevel === bLevel ? 0 : aLevel < bLevel ? 1 : -1
+      })
+  }
 }
 
 module.exports = { getEmbed }

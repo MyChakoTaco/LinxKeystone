@@ -3,50 +3,22 @@ const { getEmbed } = require('../LinxKeyEmbeder.js')
 
 const KEYS_FILEPATH = 'data/CommandKeys.json'
 
-let _PrevKeysInteractions = []
-let _IsFirstTimeLoad = true
+let _PrevKeysInteraction
 
 const Keys = async (interaction) => {
+  const sort = interaction.options.getString('sort')
+
   await deletePrevKeysInteractions()
     .then(() => {
-      interaction.reply({ embeds: [getEmbed()] })
+      interaction.reply({ embeds: [getEmbed(sort)] })
     })
     .then(() => {
-      _PrevKeysInteractions.push(interaction)
+      _PrevKeysInteraction = interaction
     })
-
-  savePrevKeysInteractions()
 }
 
 async function deletePrevKeysInteractions() {
-  try {
-    if (_IsFirstTimeLoad) {
-      _PrevKeysInteractions = getPrevKeysInteractions()
-      _IsFirstTimeLoad = false
-    }
-
-    _PrevKeysInteractions.forEach((interaction) => {
-      interaction.deleteReply()
-    })
-  } catch (e) {
-    console.warn('Keys Command: failed to delete previous interactions')
-  } finally {
-    _PrevKeysInteractions = []
-  }
-}
-
-function getPrevKeysInteractions() {
-  if (!fs.existsSync(KEYS_FILEPATH)) return []
-
-  const content = fs.readFileSync(KEYS_FILEPATH)
-  const interactions = JSON.parse(content)
-
-  return interactions
-}
-
-function savePrevKeysInteractions() {
-  const json = JSON.stringify(_PrevKeysInteractions)
-  fs.writeFileSync(KEYS_FILEPATH, json, 'utf8')
+  if (_PrevKeysInteraction) _PrevKeysInteraction.deleteReply()
 }
 
 module.exports = { Keys }
