@@ -23,6 +23,7 @@ Steps
 3.  Get latest branches from remote repo
 
     ```
+    cd C:\LinxKeystone
     git pull origin
     git checkout master
     ```
