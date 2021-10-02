@@ -21,6 +21,7 @@ Steps
 3.  Get latest branches from remote repo
 
     > git pull origin
+    > get checkout master
 
 4.  Add/Edit C:\LinxKeystone\config.json file with the following information
 
