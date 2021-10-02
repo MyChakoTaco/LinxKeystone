@@ -49,7 +49,7 @@ const getEmbed = () => {
 	const keyEmbed =
 		new MessageEmbed()
 			.setTitle("Linx Keystone")
-			.setDescription("Ready to do push some keys, boss?")
+			.setDescription("Ready to push some keys, boss?")
 			.addFields(
 				{ name: 'Character', value: characters.join("\n"), inline: true },
 				{ name: 'Dungeon', value: dungeonNames.join("\n"), inline: true },
