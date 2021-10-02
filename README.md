@@ -20,14 +20,9 @@ Steps
 
 3.  Get latest branches from remote repo
 
-    > cd C:\LinxKeystone
-    > git fetch origin
+    > git pull origin
 
-4.  Move to most recent branch
-
-    > git checkout master
-
-5.  Add/Edit C:\LinxKeystone\config.json file with the following information
+4.  Add/Edit C:\LinxKeystone\config.json file with the following information
 
     ```
     {
@@ -38,21 +33,19 @@ Steps
     }
     ```
 
-6.  Install packages
+5.  Install packages
 
-    > cd C:\LinxKeystone
     > npm install
 
-7.  Deploy commands
+6.  Deploy commands
 
-    > node deploys-commands.js
+    > node deploy-commands.js
 
-8.  Run project
+7.  Run project
 
-    > cd C:\LinxKeystone
     > npm start
 
-9.  Profit???
-10. When finished, Ctrl + C to cancel script
+8.  Profit???
+9. When finished, Ctrl + C to cancel script
 
-Repeat steps 3 - 8 when viewing updated codebase
+Repeat steps 3 - 9 when viewing updated codebase
