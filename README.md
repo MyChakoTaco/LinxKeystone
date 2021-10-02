@@ -15,13 +15,17 @@ Steps
 2.  Clone repository in desired file location
     For instance, this will save repo at C:\
 
-    > cd C:\
-    > git clone https://github.com/MyChakoTaco/LinxKeystone.git
+    ```
+    cd C:\
+    git clone https://github.com/MyChakoTaco/LinxKeystone.git
+    ```
 
 3.  Get latest branches from remote repo
 
-    > git pull origin
-    > git checkout master
+    ```
+    git pull origin
+    git checkout master
+    ```
 
 4.  Add/Edit C:\LinxKeystone\config.json file with the following information
 
@@ -36,15 +40,21 @@ Steps
 
 5.  Install packages
 
-    > npm install
+    ```
+    npm install
+    ```
 
 6.  Deploy commands
 
-    > node deploy-commands.js
+    ```
+    node deploy-commands.js
+    ```
 
 7.  Run project
 
-    > npm start
+    ```
+    npm start
+    ```
 
 8.  Profit???
 9. When finished, Ctrl + C to cancel script
