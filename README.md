@@ -27,7 +27,7 @@ Steps
     git checkout master
     ```
 
-4.  Add/Edit C:\LinxKeystone\config.json file with the following information
+4.  Add C:\LinxKeystone\config.json file with the following information
 
     ```
     {
