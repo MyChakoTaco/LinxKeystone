@@ -1,6 +1,8 @@
-const { MessageEmbed } = require('discord.js')
+const { DiscordAPIError } = require('@discordjs/rest')
+const { MessageEmbed, MessageAttachment } = require('discord.js')
 const _ = require('lodash')
 const { getKeys } = require('./DataManager')
+const { getImpFooterText } = require('./ImpFlavorText')
 
 const DUNGEON_ABBRS = {
   mots: 'Mists of Tirna Scithe',
@@ -37,6 +39,7 @@ const getKeysReply = ({ sort, filter, display }) => {
   if (display === 'text') {
     reply.content = createText(sort, filter, replyKeys, keys.length)
   } else {
+    reply.files = [new MessageAttachment('./media/imp.jpg', 'imp.jpg')]
     reply.embeds = [createEmbed(sort, filter, replyKeys, keys.length)]
   }
 
@@ -57,6 +60,8 @@ function createEmbed(sort, filter, replyKeys, total) {
   const embed = new MessageEmbed()
     .setTitle('Linx Keystone')
     .setDescription('Ready to push some keys, boss?')
+    .setFooter(getImpFooterText(), 'attachment://imp.jpg')
+    .setThumbnail('attachment://imp.jpg')
     .setTimestamp()
 
   const modifications = []

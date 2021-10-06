@@ -12,29 +12,17 @@ const Keys = async (interaction) => {
     ? interaction.options.getString('display')
     : 'embed'
 
-  await deletePrevKeysInteractions()
-    .catch((e) => {
-      console.warn('There was an error deleting previous messages: ' + e)
-    })
-    .then(() => {
-      const reply = getKeysReply({
-        sort: sort,
-        filter: filter,
-        display: display,
-      })
+  const reply = getKeysReply({
+    sort: sort,
+    filter: filter,
+    display: display,
+  })
 
-      interaction.reply(reply)
-    })
+  await interaction
+    .reply(reply)
     .catch((e) => {
-      console.warn('There was an error replying to command: ' + e)
+      console.warn('Issue replying to Keys command: ' + e)
     })
-    .then(() => {
-      _PrevKeysInteraction = interaction
-    })
-}
-
-async function deletePrevKeysInteractions() {
-  // if (_PrevKeysInteraction) _PrevKeysInteraction.deleteReply()
 }
 
 module.exports = { Keys }
