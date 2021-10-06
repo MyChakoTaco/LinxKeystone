@@ -11,6 +11,18 @@ const commands = [
       option
         .setName('sort')
         .setDescription('Sort by column name (Default is level)'),
+    )
+    .addStringOption((option) =>
+      option
+        .setName('filter')
+        .setDescription('Filter by text and shows any matches'),
+    )
+    .addStringOption((option) =>
+      option
+        .setName('display')
+        .setDescription('Displays keys in desired format (Default is Embed)')
+        .addChoice('Embed', 'embed')
+        .addChoice('Text', 'text'),
     ),
 ].map((command) => command.toJSON())
 
