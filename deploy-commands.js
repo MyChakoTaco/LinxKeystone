@@ -22,7 +22,8 @@ const commands = [
         .setName('display')
         .setDescription('Displays keys in desired format (Default is Embed)')
         .addChoice('Embed', 'embed')
-        .addChoice('Text', 'text'),
+        .addChoice('Text', 'text')
+        .addChoice('Mobile', 'mobile')
     ),
 ].map((command) => command.toJSON())
 
